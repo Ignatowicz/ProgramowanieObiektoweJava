@@ -2,47 +2,50 @@ package lab2;
 
 public class Matrix {
 
-    double[] data;
-    int rows;
-    int cols;
+    public double[] data;
+    public int rows;
+    public int cols;
 
 
-    Matrix(int rows, int cols) {
+    public Matrix(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
         data = new double[rows * cols];
     }
 
 
-    Matrix(double[][] d) {
-        int iterator = 0;
-        int iterator1 = 0;
-        int iterator2 = 0;
+    public Matrix(double[][] d) {
+        int rows = 0;
+        int cols = 0;
 
         for (double[] r : d) {
-            iterator++;
+            rows++;
+            int cols_help = 0;
             for (double c : r) {
-                iterator1++;
+                cols_help++;
             }
-            if (iterator1 > iterator2) iterator2 = iterator1;
+            if (cols_help > cols) cols = cols_help;
         }
 
-        this.rows = iterator;
-        this.cols = iterator2;
+        this.rows = rows;
+        this.cols = cols;
 
+        this.data = new double[this.rows * this.cols];
 
         for (int r = 0; r < this.rows; r++) {
             for (int c = 0; c < this.cols; c++) {
-                data[r * this.cols + c] = d[r][c];
+                this.data[r * this.cols + c] = d[r][c];
             }
         }
     }
 
-    Matrix(double[] d, int rows) {
+    public Matrix(double[] d, int rows) {
         this.rows = rows;
         this.cols = d.length / rows;
 
-        for (int i = 0; i < d.length; i++) {
+        this.data = new double[this.rows * this.cols];
+
+        for (int i = 0; i < this.data.length; i++) {
             this.data[i] = d[i];
         }
     }
@@ -60,11 +63,11 @@ public class Matrix {
     }
 
 
-    double get(int r, int c) {
+    public double get(int r, int c) {
         return data[r * this.cols + c];
     }
 
-    void set(int r, int c, double value) {
+    public void set(int r, int c, double value) {
         data[r * this.cols + c] = value;
     }
 
@@ -76,14 +79,18 @@ public class Matrix {
             buf.append("[");
             for (int c = 0; c < this.cols; c++) {
                 buf.append(c);
+                buf.append(',');
             }
+            buf.setLength(buf.length() - 1);
             buf.append("]");
+            buf.append(',');
         }
+        buf.setLength(buf.length() - 1);
         buf.append("]");
         return buf.toString();
     }
 
-    void reshape(int newRows, int newCols) {
+    public void reshape(int newRows, int newCols) {
         if (rows * cols != newRows * newCols)
             throw new RuntimeException(
                     String.format("%d x %d matrix can't be reshaped to %d x %d",
@@ -92,14 +99,14 @@ public class Matrix {
         cols = newCols;
     }
 
-    int[] shape() {
+    public int[] shape() {
         int[] number_of_rows_and_cols = new int[2];
         number_of_rows_and_cols[0] = rows;
         number_of_rows_and_cols[1] = cols;
         return number_of_rows_and_cols;
     }
 
-    Matrix add(Matrix m) {
+    public Matrix add(Matrix m) {
         double[][] answer = new double[rows][cols];
 
         if (m.rows != this.rows || m.cols != this.cols)
@@ -107,14 +114,14 @@ public class Matrix {
 
         for (int r = 0; r < this.rows; r++) {
             for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = m.data[r * this.cols + c] + data[r * this.cols + c];
+                answer[r][c] = this.data[r * this.cols + c] + m.data[r * this.cols + c];
             }
         }
 
         return new Matrix(answer);
     }
 
-    Matrix sub(Matrix m) {
+    public Matrix sub(Matrix m) {
         double[][] answer = new double[rows][cols];
 
         if (m.rows != this.rows || m.cols != this.cols)
@@ -122,26 +129,103 @@ public class Matrix {
 
         for (int r = 0; r < this.rows; r++) {
             for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = m.data[r * this.cols + c] - data[r * this.cols + c];
+                answer[r][c] = this.data[r * this.cols + c] - m.data[r * this.cols + c];
             }
         }
 
         return new Matrix(answer);
     }
 
-    Matrix mul(Matrix m) {
+    public Matrix mul(Matrix m) {
         double[][] answer = new double[rows][cols];
 
-        if (m.cols != this.rows)
+        if (m.rows != this.rows || m.cols != this.cols)
             return new Matrix(asArray());
 
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] * m.data[r * this.cols + c];
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+    public Matrix div(Matrix m) {
+        double[][] answer = new double[rows][cols];
+
+        if (m.rows != this.rows || m.cols != this.cols)
+            return new Matrix(asArray());
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] / m.data[r * this.cols + c];
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+    public Matrix add(double w) {
+        double[][] answer = new double[rows][cols];
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] + w;
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+    public Matrix sub(double w) {
+        double[][] answer = new double[rows][cols];
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] - w;
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+    public Matrix mul(double w) {
+        double[][] answer = new double[rows][cols];
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] * w;
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+    public Matrix div(double w) {
+        double[][] answer = new double[rows][cols];
+
+        for (int r = 0; r < this.rows; r++) {
+            for (int c = 0; c < this.cols; c++) {
+                answer[r][c] = this.data[r * this.cols + c] / w;
+            }
+        }
+
+        return new Matrix(answer);
+    }
+
+
+    public Matrix dot(Matrix m) {
+        double[][] answer = new double[this.rows][m.cols];
+
+        if (this.cols != m.rows)
+            return new Matrix(asArray());
 
         for (int i = 0; i < this.rows; i++) {
-            for (int j = 0; j < this.cols; j++) {
+            for (int j = 0; j < m.cols; j++) {
                 answer[i][j] = 0;
             }
         }
-
 
         for (int r = 0; r < this.rows; r++) {
             for (int c = 0; c < m.cols; c++) {
@@ -156,71 +240,7 @@ public class Matrix {
         return new Matrix(answer);
     }
 
-    Matrix add(double w) {
-        double[][] answer = new double[rows][cols];
-
-        for (int r = 0; r < this.rows; r++) {
-            for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = this.data[r * this.cols + c] + w;
-            }
-        }
-
-        return new Matrix(answer);
-    }
-
-    Matrix sub(double w) {
-        double[][] answer = new double[rows][cols];
-
-        for (int r = 0; r < this.rows; r++) {
-            for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = this.data[r * this.cols + c] - w;
-            }
-        }
-
-        return new Matrix(answer);
-    }
-
-    Matrix mul(double w) {
-        double[][] answer = new double[rows][cols];
-
-        for (int r = 0; r < this.rows; r++) {
-            for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = this.data[r * this.cols + c] * w;
-            }
-        }
-
-        return new Matrix(answer);
-    }
-
-    Matrix div(double w) {
-        double[][] answer = new double[rows][cols];
-
-        for (int r = 0; r < this.rows; r++) {
-            for (int c = 0; c < this.cols; c++) {
-                answer[r][c] = this.data[r * this.cols + c] / w;
-            }
-        }
-
-        return new Matrix(answer);
-    }
-
-    Matrix dot(Matrix m) {
-        double[] answer = new double[rows * cols];
-
-        if (m.cols != this.rows)
-            return new Matrix(asArray());
-
-
-        for (int i = 0; i < this.rows * this.cols; i++) {
-            for (int j = 0; j < this.cols; j++) {
-                answer[i] = this.data[i] + m.data[i];
-            }
-        }
-
-        return new Matrix(answer, m.rows);
-    }
-
-    double frobenius() {
+    public double frobenius() {
         double answer = 0;
 
         for (int i = 0; i < this.rows * this.cols; i++) {
@@ -233,4 +253,23 @@ public class Matrix {
 
         return answer;
     }
+
+    //////// GRUPA C /////////
+    public Matrix sumRows() {
+
+        double[][] arr = this.asArray();
+        Matrix m = new Matrix(1, this.cols);
+
+        double sum = 0;
+        for (int c = 0; c < this.cols; c++) {
+            sum = 0;
+            for (int r = 0; r < this.rows; r++) {
+                sum += arr[r][c];
+            }
+            m.data[c] = sum;
+        }
+
+        return m;
+    }
+    /////////////////////////
 }
