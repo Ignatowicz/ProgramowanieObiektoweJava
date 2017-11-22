@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document title="Jan Ignatowicz">
+    <photo url="..."/>
+    <section title="Wykształcenie">
+        <paragraph>2004-2010 SP3</paragraph>
+        <paragraph>2010-2013 G1</paragraph>
+        <paragraph>2013-2016 LO1</paragraph>
+    </section>
+    <section title="Umiejętności">
+        <paragraph-with-list>Umiejętności
+            <unorderedList>
+                <listItem>C</listItem>
+                <listItem>C++</listItem>
+                <listItem>Java</listItem>
+            </unorderedList>
+        </paragraph-with-list>
+    </section>
+</document>
