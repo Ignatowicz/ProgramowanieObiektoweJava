@@ -1,6 +1,8 @@
 import lab2.Matrix;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 
 public class MatrixTest {
@@ -146,10 +148,47 @@ public class MatrixTest {
         assertEquals("Should return 21 when those arrays are given.", 21, sum);
     }
 
+
+    ///// GRUPA C /////
     @Test
-    public void testSumRows(){
-        Matrix m = new Matrix(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
-        Matrix col = m.sumRows();
-        assertEquals(new Matrix(new double[][]{{12,15,18}}), col);
+    public void testSumRows() {
+        //  1
+        Random random = new Random();
+        int rows = random.nextInt(100) + 1;
+        int cols = random.nextInt(100) + 1;
+
+        //  2
+        double delta = random.nextInt(1) + 0.1;
+
+
+        //  3
+        Matrix matrix = new Matrix(rows, cols);
+        int i = 0;
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                matrix.set(r, c, delta * i);
+                i++;
+            }
+        }
+
+        //  4
+        Matrix sumR = matrix.sumRows();
+
+        //  5
+
+        assertEquals(matrix.shape(), sumR.shape());
+
+        //  6
+        double[] suma = new double[cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                suma[c] += matrix.get(r, c);
+            }
+        }
+        for (int c = 0; c < cols; c++) {
+            assertEquals(sumR.get(0, c), suma[c], 0.1);
+        }
+
     }
+    ///////////////////////////////////
 }
