@@ -11,22 +11,15 @@ public class Main {
         CSVReader reader = new CSVReader("admin-units.csv", ",", true);
 
         while (reader.next()) {
-
-            try {
-
-                int id = reader.getInt("id");
-                int parent = reader.getInt("parent");
-                String name = reader.get("name");
-                double x1 = reader.getDouble("x1");
-                double population = reader.getDouble("population");
+            int id = reader.getInt("id");
+            int parent = reader.getInt("parent");
+            String name = reader.get("name");
+            double x1 = reader.getDouble("x1");
+            double population = reader.getDouble("density");
 
 
-                System.out.printf(Locale.US, "%d %d %s %f %f", id, parent, name, x1, population);
-                System.out.println();
-
-            } catch (NoSuchElementException e) {
-                System.out.println("huehue");
-            }
+            System.out.printf(Locale.US, "%d %d %s %f %f", id, parent, name, x1, population);
+            System.out.println();
         }
     }
 }
