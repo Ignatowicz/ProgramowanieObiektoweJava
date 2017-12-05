@@ -34,6 +34,14 @@ public class AdminUnitList {
             //tymczasowe przypisanie, zeby mozna sie bylo odwolac do tego elementu
             unit.parent = unit;
 
+            // bbox case
+            unit.bbox.addPoint(reader.getDouble(7), reader.getDouble(8));
+            unit.bbox.addPoint(reader.getDouble(9), reader.getDouble(10));
+            unit.bbox.addPoint(reader.getDouble(11), reader.getDouble(12));
+            unit.bbox.addPoint(reader.getDouble(13), reader.getDouble(14));
+            unit.bbox.addPoint(reader.getDouble(15), reader.getDouble(16));
+
+
             units.add(unit);
         }
 
@@ -65,6 +73,7 @@ public class AdminUnitList {
         }
     }
 
+
     public void selectAdminLevel(int level) {
 
     }
@@ -83,7 +92,7 @@ public class AdminUnitList {
      *
      * @param out
      */
-    void list(PrintStream out) {
+    public void list(PrintStream out) {
         for (AdminUnit unit : units) {
             out.println(unit.toString());
         }
@@ -96,7 +105,7 @@ public class AdminUnitList {
      * @param offset - od którego elementu rozpocząć wypisywanie
      * @param limit  - ile (maksymalnie) elementów wypisać
      */
-    void list(PrintStream out, int offset, int limit) {
+    public void list(PrintStream out, int offset, int limit) {
         for (int i = offset; i < offset + limit; i++) {
             out.println(units.get(i).toString());
         }
@@ -109,7 +118,7 @@ public class AdminUnitList {
      * @param regex   - jeśli regex=true, użyj finkcji String matches(); jeśli false użyj funkcji contains()
      * @return podzbiór elementów, których nazwy spełniają kryterium wyboru
      */
-    AdminUnitList selectByName(String pattern, boolean regex) {
+    public AdminUnitList selectByName(String pattern, boolean regex) {
         AdminUnitList ret = new AdminUnitList();
         // przeiteruj po zawartości units
         // jeżeli nazwa jednostki pasuje do wzorca dodaj do ret
@@ -118,5 +127,35 @@ public class AdminUnitList {
                 ret.units.add(unit);
         }
         return ret;
+    }
+
+    /**
+     * Zwraca listę jednostek sąsiadujących z jendostką unit na tym samym poziomie hierarchii admin_level.
+     * Czyli sąsiadami wojweództw są województwa, powiatów - powiaty, gmin - gminy, miejscowości - inne miejscowości
+     *
+     * @param unit        - jednostka, której sąsiedzi mają być wyznaczeni
+     * @param maxdistance - parametr stosowany wyłącznie dla miejscowości, maksymalny promień odległości od środka unit,
+     *                    w którym mają sie znaleźć punkty środkowe BoundingBox sąsiadów
+     * @return lista wypełniona sąsiadami
+     */
+    public AdminUnitList getNeighbors(AdminUnit unit, double maxdistance) {
+
+        double t1 = System.nanoTime() / 1e6;
+
+        if (unit.bbox.isEmpty()) throw new RuntimeException("Bbox of given unit is empty");
+
+        AdminUnitList neighbours = new AdminUnitList();
+
+        for (AdminUnit u : units) {
+            if (u.adminLevel == unit.adminLevel) {
+                if (unit.bbox.intersects(u.bbox)) {
+                    neighbours.units.add(u);
+                }
+            }
+        }
+
+        double t2 = System.nanoTime() / 1e6;
+
+        return neighbours;
     }
 }
