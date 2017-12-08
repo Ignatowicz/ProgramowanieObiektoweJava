@@ -61,6 +61,7 @@ public class AdminUnitList {
                 parentid2child.put(entry.getKey(), tmp);
             }
             parentid2child.get(entry.getKey()).add(units.get(units.indexOf(entry.getValue())));
+            units.get(units.indexOf(entry.getValue())).children = parentid2child.get(entry.getKey());
         }
     }
 
@@ -138,7 +139,7 @@ public class AdminUnitList {
      *                    w którym mają sie znaleźć punkty środkowe BoundingBox sąsiadów
      * @return lista wypełniona sąsiadami
      */
-    public AdminUnitList getNeighbors(AdminUnit unit, double maxdistance) {
+    public AdminUnitList getNeighbours(AdminUnit unit, double maxdistance) {
 
         double t1 = System.nanoTime() / 1e6;
 

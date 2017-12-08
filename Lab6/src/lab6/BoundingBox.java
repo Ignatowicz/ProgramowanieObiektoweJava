@@ -25,19 +25,8 @@ public class BoundingBox {
         if (this.isEmpty()) {       // dodaje pierwszy punkt
             xmin = x;
             ymin = y;
-        } else if (xmax == Double.NaN) {    // dodaje drugi punkt
-            if (xmin > x) {
-                xmax = xmin;
-                xmin = x;
-            } else {
-                xmax = x;
-            }
-            if (ymin > y) {
-                ymax = ymin;
-                ymin = y;
-            } else {
-                ymax = y;
-            }
+            xmax = x;
+            ymax = y;
         }
         //  dodaje kazdy kolejny punkt
         if (xmin > x) xmin = x;
@@ -65,7 +54,8 @@ public class BoundingBox {
      * @return
      */
     public boolean contains(BoundingBox bb) {
-        return this.contains(bb.xmin, bb.ymin) && this.contains(bb.xmax, bb.ymax);
+        return this.contains(bb.xmin, bb.ymin) && this.contains(bb.xmax, bb.ymax)
+                && this.contains(bb.xmin, bb.ymax) && this.contains(bb.xmax, bb.ymin);
     }
 
     /**
@@ -75,12 +65,10 @@ public class BoundingBox {
      * @return
      */
     public boolean intersects(BoundingBox bb) {
-        if (this.contains(bb.xmin, bb.ymin) || this.contains(bb.xmax, bb.ymax))
-            return true;
-        else if (bb.contains(this.xmax, this.ymax) || bb.contains(this.xmin, this.ymin))
-            return true;
-        return false;
+        return (xmax > bb.xmin && ymin < bb.ymax) || (xmax > bb.xmin && ymax > bb.ymin)
+                || (xmin < bb.xmax && ymax > bb.ymin) || (xmin < bb.xmax && ymin < bb.ymax);
     }
+
 
     /**
      * Powiększa rozmiary tak, aby zawierał bb oraz poprzednią wersję this
@@ -113,9 +101,7 @@ public class BoundingBox {
      */
     public double getCenterX() {
         if (this.isEmpty())
-            throw new RuntimeException("The box is empty!");
-        if ((xmax == Double.NaN && xmin == Double.NaN) || (ymax == Double.NaN && ymin == Double.NaN))
-            throw new RuntimeException("You've added only one point. Add one more to create a box.");
+            throw new IllegalThreadStateException("The box is empty!");
         return (xmax + xmin) / 2;
     }
 
@@ -127,9 +113,7 @@ public class BoundingBox {
      */
     public double getCenterY() {
         if (this.isEmpty())
-            throw new RuntimeException("The box is empty!");
-        if ((xmax == Double.NaN && xmin == Double.NaN) || (ymax == Double.NaN && ymin == Double.NaN))
-            throw new RuntimeException("You've added only one point. Add one more to create a box.");
+            throw new IllegalThreadStateException("The box is empty!");
         return (ymax + ymin) / 2;
     }
 
@@ -143,15 +127,18 @@ public class BoundingBox {
      */
     public double distanceTo(BoundingBox bb) {
         if (this.isEmpty())
-            throw new RuntimeException("The box is empty!");
-        if ((xmax == Double.NaN && xmin == Double.NaN) || (ymax == Double.NaN && ymin == Double.NaN))
-            throw new RuntimeException("You've added only one point. Add one more to create a box.");
+            throw new IllegalThreadStateException("The box is empty!");
 
         if (bb.isEmpty())
-            throw new RuntimeException("The bbox is empty!");
-        if ((bb.xmax == Double.NaN && bb.xmin == Double.NaN) || (bb.ymax == Double.NaN && bb.ymin == Double.NaN))
-            throw new RuntimeException("Bbox has only one point added");
+            throw new IllegalThreadStateException("The bbox is empty!");
 
-        return Math.sqrt(Math.pow(this.getCenterX() + bb.getCenterX(), 2) + Math.pow(this.getCenterY() + bb.getCenterY(), 2));
+
+        double startLat = this.getCenterX();
+        double endLat = bb.getCenterX();
+        double startLong = this.getCenterY();
+        double endLong = bb.getCenterY();
+
+        return Haversine.distance(startLat, startLong, endLat, endLong);
+        //return Math.sqrt(Math.pow(this.getCenterX() + bb.getCenterX(), 2) + Math.pow(this.getCenterY() + bb.getCenterY(), 2));
     }
 }
