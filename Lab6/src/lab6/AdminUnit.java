@@ -17,7 +17,7 @@ public class AdminUnit {
 
     public String toString() {
         return name + " " + adminLevel + " " + area + " " + population + " " + density +
-                " " + parent.toString() + " " + bbox.toString();
+                " " + parent.name + " " + bbox.toString();
     }
 
     public String getName() {

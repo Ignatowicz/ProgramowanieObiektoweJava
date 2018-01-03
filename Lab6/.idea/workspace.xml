@@ -48,12 +48,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminUnitTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdminUnitTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/lab6/AdminUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="1044">
+              <caret line="58" column="55" lean-forward="false" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -61,34 +63,17 @@
       <file leaf-file-name="AdminUnit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lab6/AdminUnit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="18">
+              <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
               <folding>
-                <element signature="e#535#536#0" expanded="true" />
-                <element signature="e#562#563#0" expanded="true" />
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#632#633#0" expanded="true" />
-                <element signature="e#663#664#0" expanded="true" />
-                <element signature="e#690#691#0" expanded="true" />
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoundingBox.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/lab6/BoundingBox.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="e#280#281#0" expanded="true" />
-                <element signature="e#346#347#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
-                <element signature="e#1094#1095#0" expanded="true" />
-                <element signature="e#1259#1260#0" expanded="true" />
-                <element signature="e#1330#1331#0" expanded="true" />
+                <element signature="e#529#530#0" expanded="true" />
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#626#627#0" expanded="true" />
+                <element signature="e#657#658#0" expanded="true" />
+                <element signature="e#684#685#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#749#750#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,12 +130,12 @@
         <option value="$PROJECT_DIR$/test/lab6/CSVReaderTest.java" />
         <option value="$PROJECT_DIR$/src/lab6/CSVReader.java" />
         <option value="$PROJECT_DIR$/src/lab6/Haversine.java" />
-        <option value="$PROJECT_DIR$/src/lab6/AdminUnit.java" />
         <option value="$PROJECT_DIR$/src/lab6/AdminUnitList.java" />
         <option value="$PROJECT_DIR$/src/lab6/Main.java" />
         <option value="$PROJECT_DIR$/test/lab6/AdminUnitListTest.java" />
         <option value="$PROJECT_DIR$/src/lab6/BoundingBox.java" />
         <option value="$PROJECT_DIR$/test/lab6/BoundingBoxTest.java" />
+        <option value="$PROJECT_DIR$/src/lab6/AdminUnit.java" />
         <option value="$PROJECT_DIR$/test/lab6/AdminUnitTest.java" />
       </list>
     </option>
@@ -249,7 +234,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android JUnit.BoundingBoxTest">
+  <component name="RunManager" selected="JUnit.AdminUnitTest">
     <configuration name="BoundingBoxTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -296,6 +281,56 @@
       <module name="" />
       <envs />
     </configuration>
+    <configuration name="AdminUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="lab6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Lab6" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="lab6" />
+      <option name="MAIN_CLASS_NAME" value="lab6.AdminUnitTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="AdminUnitTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="lab6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Lab6" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="lab6" />
+      <option name="MAIN_CLASS_NAME" value="lab6.AdminUnitTest" />
+      <option name="METHOD_NAME" value="testToString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration name="BoundingBoxTest.distanceTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -321,31 +356,6 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="BoundingBoxTest.getCenterX" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="lab6.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Lab6" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="lab6" />
-      <option name="MAIN_CLASS_NAME" value="lab6.BoundingBoxTest" />
-      <option name="METHOD_NAME" value="getCenterX" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration name="BoundingBoxTest.getCenterY" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -359,31 +369,6 @@
       <option name="PACKAGE_NAME" value="lab6" />
       <option name="MAIN_CLASS_NAME" value="lab6.BoundingBoxTest" />
       <option name="METHOD_NAME" value="getCenterY" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="BoundingBoxTest.testToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="lab6.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Lab6" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="lab6" />
-      <option name="MAIN_CLASS_NAME" value="lab6.BoundingBoxTest" />
-      <option name="METHOD_NAME" value="testToString" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -457,19 +442,19 @@
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.testToString" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterX" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterY" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.distanceTo" />
-      <item index="4" class="java.lang.String" itemvalue="Android JUnit.BoundingBoxTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterY" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.distanceTo" />
+      <item index="2" class="java.lang.String" itemvalue="Android JUnit.BoundingBoxTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AdminUnitTest.testToString" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AdminUnitTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android JUnit.BoundingBoxTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.distanceTo" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterY" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterX" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.testToString" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AdminUnitTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AdminUnitTest.testToString" />
+        <item index="2" class="java.lang.String" itemvalue="Android JUnit.BoundingBoxTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.distanceTo" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.BoundingBoxTest.getCenterY" />
       </list>
     </recent_temporary>
   </component>
@@ -506,44 +491,44 @@
       <workItem from="1513245942735" duration="16000" />
       <workItem from="1513256941394" duration="4791000" />
       <workItem from="1513876059275" duration="137000" />
-      <workItem from="1514979420330" duration="6112000" />
+      <workItem from="1514979420330" duration="7633000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BoundingBoxTest - 2018.01.03 at 14h 28m 02s.xml">
-      <configuration name="BoundingBoxTest" configurationId="AndroidJUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 43m 48s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_distanceTo - 2018.01.03 at 14h 23m 32s.xml">
-      <configuration name="BoundingBoxTest.distanceTo" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 44m 23s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_distanceTo - 2018.01.03 at 14h 25m 43s.xml">
-      <configuration name="BoundingBoxTest.distanceTo" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 46m 10s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_distanceTo - 2018.01.03 at 14h 25m 53s.xml">
-      <configuration name="BoundingBoxTest.distanceTo" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 49m 26s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_distanceTo - 2018.01.03 at 14h 27m 38s.xml">
-      <configuration name="BoundingBoxTest.distanceTo" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 50m 13s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_getCenterX - 2018.01.03 at 14h 26m 30s.xml">
-      <configuration name="BoundingBoxTest.getCenterX" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest - 2018.01.03 at 14h 55m 24s.xml">
+      <configuration name="AdminUnitTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_getCenterX - 2018.01.03 at 14h 26m 38s.xml">
-      <configuration name="BoundingBoxTest.getCenterX" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest_testToString - 2018.01.03 at 14h 38m 25s.xml">
+      <configuration name="AdminUnitTest.testToString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_getCenterY - 2018.01.03 at 14h 26m 09s.xml">
-      <configuration name="BoundingBoxTest.getCenterY" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest_testToString - 2018.01.03 at 14h 42m 56s.xml">
+      <configuration name="AdminUnitTest.testToString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_getCenterY - 2018.01.03 at 14h 27m 22s.xml">
-      <configuration name="BoundingBoxTest.getCenterY" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest_testToString - 2018.01.03 at 14h 43m 17s.xml">
+      <configuration name="AdminUnitTest.testToString" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BoundingBoxTest_getCenterY - 2018.01.03 at 14h 27m 33s.xml">
-      <configuration name="BoundingBoxTest.getCenterY" configurationId="JUnit" />
+    <history-entry file="AdminUnitTest_testToString - 2018.01.03 at 14h 45m 36s.xml">
+      <configuration name="AdminUnitTest.testToString" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73410000" />
+    <option name="totallyTimeSpent" value="74931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-4" width="1280" height="979" extended-state="6" />
@@ -558,7 +543,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33485714" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33485714" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -587,7 +572,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -597,14 +582,14 @@
         <state relative-caret-position="306">
           <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -629,7 +614,7 @@
         <state relative-caret-position="378">
           <caret line="23" column="86" lean-forward="false" selection-start-line="23" selection-start-column="86" selection-end-line="23" selection-end-column="86" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -664,14 +649,14 @@
         <state relative-caret-position="342">
           <caret line="19" column="64" lean-forward="true" selection-start-line="19" selection-start-column="64" selection-end-line="19" selection-end-column="64" />
           <folding>
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -725,14 +710,14 @@
         <state relative-caret-position="288">
           <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -831,14 +816,14 @@
         <state relative-caret-position="306">
           <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1038,46 +1023,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/lab6/CSVReaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1522">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/lab6/BoundingBoxTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1782">
+        <state relative-caret-position="812">
           <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lab6/AdminUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#535#536#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
-            <element signature="e#726#727#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/lab6/AdminUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="13" lean-forward="true" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,6 +1044,41 @@
             <element signature="e#1094#1095#0" expanded="true" />
             <element signature="e#1259#1260#0" expanded="true" />
             <element signature="e#1330#1331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lab6/CSVReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1522">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lab6/AdminUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding>
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#749#750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/lab6/AdminUnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1044">
+          <caret line="58" column="55" lean-forward="false" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
