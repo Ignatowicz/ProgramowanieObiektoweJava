@@ -19,4 +19,20 @@ public class AdminUnit {
         return name + " " + adminLevel + " " + area + " " + population + " " + density +
                 " " + parent.toString() + " " + bbox.toString();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPopulation() {
+        return population;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public AdminUnit getParent() {
+        return parent;
+    }
 }

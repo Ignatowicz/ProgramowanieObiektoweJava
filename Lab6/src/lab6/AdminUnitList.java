@@ -5,6 +5,7 @@ import com.sun.org.glassfish.external.amx.AMX;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class AdminUnitList {
 
@@ -158,5 +159,136 @@ public class AdminUnitList {
         double t2 = System.nanoTime() / 1e6;
 
         return neighbours;
+    }
+
+
+    /**
+     * Sortuje daną listę jednostek (in place = w miejscu)
+     *
+     * @return this
+     */
+    AdminUnitList sortInPlaceByName() {
+        units.sort(new AdminUnitComparator());
+        return this;
+    }
+
+
+    /**
+     * Sortuje daną listę jednostek (in place = w miejscu)
+     *
+     * @return this
+     */
+    AdminUnitList sortInPlaceByArea() {
+        units.sort(new Comparator<AdminUnit>() {
+            @Override
+            public int compare(AdminUnit adminUnit, AdminUnit t1) {
+                return Double.compare(adminUnit.getArea(), t1.getArea());
+            }
+        });
+        return this;
+    }
+
+
+    /**
+     * Sortuje daną listę jednostek (in place = w miejscu)
+     *
+     * @return this
+     */
+    AdminUnitList sortInplaceByPopulation() {
+        units.sort(Comparator.comparingDouble(AdminUnit::getPopulation));
+        return this;
+    }
+
+
+    AdminUnitList sortInplace(Comparator<AdminUnit> cmp) {
+        units.sort(cmp);
+        return this;
+    }
+
+
+    AdminUnitList sort(Comparator<AdminUnit> cmp) {
+        AdminUnitList answer = new AdminUnitList();
+        answer.units = new ArrayList<>(this.units);
+        answer.sortInplace(cmp);
+        return answer;
+    }
+
+
+    /**
+     *
+     * @param pred referencja do interfejsu Predicate
+     * @return nową listę, na której pozostawiono tylko te jednostki,
+     * dla których metoda test() zwraca true
+     */
+    AdminUnitList filter(Predicate<AdminUnit> pred) {
+        AdminUnitList answer = new AdminUnitList();
+        for (AdminUnit au : units) {
+            if (pred.test(au))
+                answer.units.add(au);
+        }
+        return answer;
+    }
+
+    AdminUnitList filterByK() {
+        return filter(a->a.getName().startsWith("K"));
+    }
+
+
+
+
+    /**
+     * Zwraca co najwyżej limit elementów spełniających pred
+     * @param pred - predykat
+     * @param limit - maksymalna liczba elementów
+     * @return nową listę
+     */
+    AdminUnitList filter(Predicate<AdminUnit> pred, int limit){
+        AdminUnitList answer = new AdminUnitList();
+        int i=0;
+        for (AdminUnit au : units) {
+            if (pred.test(au))
+                answer.units.add(au);
+            i++;
+            if(i>limit)
+                break;
+        }
+        return answer;
+    }
+
+
+    /**
+     * Zwraca co najwyżej limit elementów spełniających pred począwszy od offset
+     * Offest jest obliczany po przefiltrowaniu
+     * @param pred - predykat
+     * @param - od którego elementu
+     * @param limit - maksymalna liczba elementów
+     * @return nową listę
+     */
+    AdminUnitList filter(Predicate<AdminUnit> pred, int offset, int limit){
+        AdminUnitList answer = new AdminUnitList();
+        int i=offset;
+        for (AdminUnit au : units) {
+            if (pred.test(au))
+                answer.units.add(au);
+            i++;
+            if(i>limit+offset)
+                break;
+        }
+        return answer;
+    }
+
+
+
+
+
+
+
+
+
+    class AdminUnitComparator implements Comparator<AdminUnit> {
+        @Override
+        public int compare(AdminUnit adminUnit, AdminUnit t1) {
+            return adminUnit.getName().compareTo(t1.getName());
+        }
     }
 }

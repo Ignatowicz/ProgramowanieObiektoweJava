@@ -2,10 +2,10 @@ package lab6;
 
 public class BoundingBox {
 
-    public double xmin = Double.NaN;
-    public double ymin = Double.NaN;
-    public double xmax = Double.NaN;
-    public double ymax = Double.NaN;
+    public double xmin = Double.MAX_VALUE;
+    public double ymin = Double.MAX_VALUE;
+    public double xmax = Double.MAX_VALUE;
+    public double ymax = Double.MAX_VALUE;
 
 
     public BoundingBox() {
@@ -29,11 +29,22 @@ public class BoundingBox {
             ymax = y;
         }
         //  dodaje kazdy kolejny punkt
-        if (xmin > x) xmin = x;
-        else if (xmax < x) xmax = x;
+        else {
+            if (xmin > x) xmin = x;
+            else if (xmax < x) xmax = x;
 
-        if (ymin > y) ymin = y;
-        else if (ymax < y) ymax = y;
+            if (ymin > y) ymin = y;
+            else if (ymax < y) ymax = y;
+        }
+    }
+
+    /**
+     * Sprawdza czy BB jest pusty
+     *
+     * @return
+     */
+    public boolean isEmpty() {
+        return xmax == Double.MAX_VALUE && ymax == Double.MAX_VALUE;
     }
 
     /**
@@ -84,14 +95,6 @@ public class BoundingBox {
         return this;
     }
 
-    /**
-     * Sprawdza czy BB jest pusty
-     *
-     * @return
-     */
-    public boolean isEmpty() {
-        return xmax == Double.NaN && xmin == Double.NaN && ymax == Double.NaN && ymin == Double.NaN;
-    }
 
     /**
      * Oblicza i zwraca współrzędną x środka
