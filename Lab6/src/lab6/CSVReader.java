@@ -142,7 +142,7 @@ public class CSVReader {
     public double getDouble(String columnLabel) {
         if (isMissing(columnLabel))
             return -1.0;
-        return Double.parseDouble(current[columnLabelsToInt.get(columnLabel)]);
+        return Double.parseDouble(this.current[this.columnLabelsToInt.get(columnLabel)]);
     }
 
     public LocalTime getTime(int columnIndex, String format) {

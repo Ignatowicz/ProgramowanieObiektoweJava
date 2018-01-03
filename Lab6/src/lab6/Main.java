@@ -8,18 +8,22 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        CSVReader reader = new CSVReader("admin-units.csv", ",", true);
+//        CSVReader reader = new CSVReader("admin-units.csv", ",", true);
+//
+//        while (reader.next()) {
+//            int id = reader.getInt("id");
+//            int parent = reader.getInt("parent");
+//            String name = reader.get("name");
+//            double x1 = reader.getDouble("x1");
+//            double population = reader.getDouble("density");
+//
+//
+//            System.out.printf(Locale.US, "%d %d %s %f %f", id, parent, name, x1, population);
+//            System.out.println();
+//        }
 
-        while (reader.next()) {
-            int id = reader.getInt("id");
-            int parent = reader.getInt("parent");
-            String name = reader.get("name");
-            double x1 = reader.getDouble("x1");
-            double population = reader.getDouble("density");
+        AdminUnitList aul = new AdminUnitList();
 
-
-            System.out.printf(Locale.US, "%d %d %s %f %f", id, parent, name, x1, population);
-            System.out.println();
-        }
+        aul.read("admin-units.csv");
     }
 }

@@ -9,19 +9,20 @@ import java.util.function.Predicate;
 
 public class AdminUnitList {
 
-    private List<AdminUnit> units = new ArrayList<>();
+    public List<AdminUnit> units = new ArrayList<>();
 
 
     public void read(String filename) throws IOException {
-        CSVReader reader = new CSVReader("admin-units.csv", ",", true);
+        CSVReader reader = new CSVReader(filename, ",", true);
 
         Map<Long, AdminUnit> id = new HashMap<>();
         Map<AdminUnit, Long> parentid = new HashMap<>();
 
         Map<Long, List<AdminUnit>> parentid2child = new HashMap<>();
 
-
+        int i=0;
         while (reader.next()) {
+            i++;
             AdminUnit unit = new AdminUnit();
             unit.name = reader.get("name");
             unit.adminLevel = reader.getInt("adminLevel");
@@ -36,11 +37,11 @@ public class AdminUnitList {
             unit.parent = unit;
 
             // bbox case
-            unit.bbox.addPoint(reader.getDouble(7), reader.getDouble(8));
-            unit.bbox.addPoint(reader.getDouble(9), reader.getDouble(10));
-            unit.bbox.addPoint(reader.getDouble(11), reader.getDouble(12));
-            unit.bbox.addPoint(reader.getDouble(13), reader.getDouble(14));
-            unit.bbox.addPoint(reader.getDouble(15), reader.getDouble(16));
+            unit.bbox.addPoint(reader.getDouble("x1"), reader.getDouble("y1"));
+            unit.bbox.addPoint(reader.getDouble("x2"), reader.getDouble("y2"));
+            unit.bbox.addPoint(reader.getDouble("x3"), reader.getDouble("y3"));
+            unit.bbox.addPoint(reader.getDouble("x4"), reader.getDouble("y4"));
+            unit.bbox.addPoint(reader.getDouble("x5"), reader.getDouble("y5"));
 
 
             units.add(unit);
@@ -66,26 +67,13 @@ public class AdminUnitList {
         }
     }
 
-    private void fixMissingValues(AdminUnit au) {
+    public void fixMissingValues(AdminUnit au) {
         if (au.population == -1) {
             if (au.parent.population == -1)
                 fixMissingValues(au.parent);
             au.density = au.parent.density;
             au.population = au.area * au.density;
         }
-    }
-
-
-    public void selectAdminLevel(int level) {
-
-    }
-
-    public void selectNameMatches(String name) {
-
-    }
-
-    public void selectInside(double x1, double y1, double x2, double y2) {
-
     }
 
 
@@ -125,7 +113,7 @@ public class AdminUnitList {
         // przeiteruj po zawartości units
         // jeżeli nazwa jednostki pasuje do wzorca dodaj do ret
         for (AdminUnit unit : units) {
-            if (unit.toString().contains(pattern))
+            if (unit.name.contains(pattern))
                 ret.units.add(unit);
         }
         return ret;
@@ -157,6 +145,8 @@ public class AdminUnitList {
         }
 
         double t2 = System.nanoTime() / 1e6;
+
+        System.out.printf(Locale.US,"t2-t1=%f\n",t2-t1);
 
         return neighbours;
     }
