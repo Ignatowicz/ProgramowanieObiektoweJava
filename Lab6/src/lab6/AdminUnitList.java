@@ -68,8 +68,8 @@ public class AdminUnitList {
     }
 
     public void fixMissingValues(AdminUnit au) {
-        if (au.population == -1) {
-            if (au.parent.population == -1)
+        if (au.population == -1.0) {
+            if (au.parent.population == -1.0)
                 fixMissingValues(au.parent);
             au.density = au.parent.density;
             au.population = au.area * au.density;
@@ -136,11 +136,28 @@ public class AdminUnitList {
 
         AdminUnitList neighbours = new AdminUnitList();
 
-        for (AdminUnit u : units) {
-            if (u.adminLevel == unit.adminLevel) {
-                if (unit.bbox.intersects(u.bbox)) {
-                    neighbours.units.add(u);
+//        for (AdminUnit u : units) {
+//            if (u.adminLevel == unit.adminLevel) {
+//                if (unit.bbox.intersects(u.bbox)) {
+//                    neighbours.units.add(u);
+//                }
+//            }
+//        }
+
+        for(AdminUnit neighbour : units){
+            if(neighbour.bbox.isEmpty()) throw new IllegalThreadStateException("You can't solve the distance between points in an empty Bounding Box");
+            else{
+                if(unit.adminLevel == 8){
+                    if(neighbour.adminLevel == 8 && unit.bbox.distanceTo(neighbour.bbox) < maxdistance){
+                        neighbours.add(neighbour);
+                    }
                 }
+                else{
+                    if(unit.adminLevel == neighbour.adminLevel && unit.bbox.intersects(neighbour.bbox)){
+                        neighbours.add(neighbour);
+                    }
+                }
+
             }
         }
 
@@ -150,6 +167,18 @@ public class AdminUnitList {
 
         return neighbours;
     }
+
+    public void add(AdminUnit unit){
+        units.add(unit);
+    }
+
+
+
+
+
+
+    /* Sortowanie - Lab 9 */
+
 
 
     /**
@@ -162,6 +191,12 @@ public class AdminUnitList {
         return this;
     }
 
+    public class AdminUnitComparator implements Comparator<AdminUnit> {
+        @Override
+        public int compare(AdminUnit adminUnit, AdminUnit t1) {
+            return adminUnit.getName().compareTo(t1.getName());
+        }
+    }
 
     /**
      * Sortuje daną listę jednostek (in place = w miejscu)
@@ -234,12 +269,12 @@ public class AdminUnitList {
      */
     AdminUnitList filter(Predicate<AdminUnit> pred, int limit){
         AdminUnitList answer = new AdminUnitList();
-        int i=0;
+        int i = 0;
         for (AdminUnit au : units) {
             if (pred.test(au))
                 answer.units.add(au);
             i++;
-            if(i>limit)
+            if( i > limit )
                 break;
         }
         return answer;
@@ -256,7 +291,7 @@ public class AdminUnitList {
      */
     AdminUnitList filter(Predicate<AdminUnit> pred, int offset, int limit){
         AdminUnitList answer = new AdminUnitList();
-        int i=offset;
+        int i = offset;
         for (AdminUnit au : units) {
             if (pred.test(au))
                 answer.units.add(au);
@@ -265,20 +300,5 @@ public class AdminUnitList {
                 break;
         }
         return answer;
-    }
-
-
-
-
-
-
-
-
-
-    class AdminUnitComparator implements Comparator<AdminUnit> {
-        @Override
-        public int compare(AdminUnit adminUnit, AdminUnit t1) {
-            return adminUnit.getName().compareTo(t1.getName());
-        }
     }
 }

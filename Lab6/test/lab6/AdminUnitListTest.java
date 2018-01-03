@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Comparator;
 
 import static org.junit.Assert.*;
 
@@ -74,38 +75,78 @@ public class AdminUnitListTest {
     }
 
     @Test
-    public void sortInPlaceByName() {
+    public void sortInPlaceByName() throws IOException {
+
+        AdminUnitList aul = new AdminUnitList();
+
+        aul.read("admin-units.csv");
+
+        aul.sortInPlaceByName();
+
+        System.out.println("Test of sortInPlaceByName() method\n");
+
+        System.out.println(aul.units.get(0));
+        System.out.println(aul.units.get(1));
+        System.out.println(aul.units.get(2));
+        System.out.println(aul.units.get(3));
+        System.out.println(aul.units.get(4));
+        System.out.println(aul.units.get(5));
+        System.out.println(aul.units.get(6));
+        System.out.println(aul.units.get(7));
+        System.out.println(aul.units.get(8));
+
+        System.out.println("End of this test.\n");
+
     }
 
     @Test
-    public void sortInPlaceByArea() {
+    public void sortInPlaceByArea() throws IOException {
+        AdminUnitList aul = new AdminUnitList();
+
+        aul.read("admin-units.csv");
+
+        aul.sortInPlaceByArea();
+
+        System.out.println("Test of sortInPlaceByArea() method\n");
+
+        System.out.println(aul.units.get(1000).area);
+        System.out.println(aul.units.get(1001).area);
+        System.out.println(aul.units.get(1002).area);
+        System.out.println(aul.units.get(1003).area);
+        System.out.println(aul.units.get(1004).area);
+        System.out.println(aul.units.get(1005).area);
+        System.out.println(aul.units.get(1006).area);
+        System.out.println(aul.units.get(1007).area);
+        System.out.println(aul.units.get(1008).area);
+
+        System.out.println("End of this test.\n");
     }
 
     @Test
-    public void sortInplaceByPopulation() {
+    public void sortInplaceByPopulation() throws IOException {
+        AdminUnitList aul = new AdminUnitList();
+
+        aul.read("admin-units.csv");
+
+        aul.sortInplaceByPopulation();
+
+        System.out.println("Test of sortInPlaceByPupolation() method\n");
+
+        System.out.println(aul.units.get(13500).population);
+        System.out.println(aul.units.get(13501).population);
+        System.out.println(aul.units.get(13502).population);
+        System.out.println(aul.units.get(13503).population);
+        System.out.println(aul.units.get(13504).population);
+        System.out.println(aul.units.get(13505).population);
+        System.out.println(aul.units.get(13506).population);
+        System.out.println(aul.units.get(13507).population);
+        System.out.println(aul.units.get(13508).population);
+
+        System.out.println("End of this test.\n");
     }
 
-    @Test
-    public void sortInplace() {
-    }
-
-    @Test
-    public void sort() {
-    }
 
     @Test
     public void filter() {
-    }
-
-    @Test
-    public void filterByK() {
-    }
-
-    @Test
-    public void filter1() {
-    }
-
-    @Test
-    public void filter2() {
     }
 }
