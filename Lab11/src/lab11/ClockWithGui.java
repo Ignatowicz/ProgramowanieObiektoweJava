@@ -6,9 +6,16 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.time.LocalTime;
 
+import static java.awt.BasicStroke.CAP_ROUND;
+import static java.awt.BasicStroke.JOIN_MITER;
+
 public class ClockWithGui extends JPanel {
 
     LocalTime time = LocalTime.now();
+
+    ClockWithGui() {
+        new ClockThread().start();
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Clock");
@@ -23,6 +30,7 @@ public class ClockWithGui extends JPanel {
 
 
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2d=(Graphics2D)g;
         g2d.translate(getWidth()/2,getHeight()/2);
 
@@ -36,32 +44,46 @@ public class ClockWithGui extends JPanel {
         }
 
 
+        g2d.setStroke(new BasicStroke(3, CAP_ROUND,JOIN_MITER));
         AffineTransform saveAT = g2d.getTransform();
         g2d.rotate(time.getHour()%12*2*Math.PI/12);
-        g2d.drawLine(0,0,0,-100);
+        g2d.drawLine(0,0,0,-60);
         g2d.setTransform(saveAT);
 
+        g2d.setStroke(new BasicStroke(2, CAP_ROUND,JOIN_MITER));
         AffineTransform saveATM = g2d.getTransform();
-        g2d.rotate(time.getMinute()%12*2*Math.PI/12);
+        g2d.rotate(time.getMinute()%60*2*Math.PI/60);
         g2d.drawLine(0,0,0,-100);
         g2d.setTransform(saveATM);
 
+        g2d.setStroke(new BasicStroke(1, CAP_ROUND,JOIN_MITER));
         AffineTransform saveATS = g2d.getTransform();
-        g2d.rotate(time.getSecond()%12*2*Math.PI/12);
-        g2d.drawLine(0,0,0,-100);
+        g2d.rotate(time.getSecond()%60*60*2*Math.PI/3600);
+        g2d.drawLine(0,0,0,-120);
         g2d.setTransform(saveATS);
+
     }
 
 
 
-    class ClockThread extends Thread{
+    class ClockThread extends Thread {
+
         @Override
         public void run() {
             while(true) {
                 time = LocalTime.now();
-                System.out.printf("%02d:%02d:%02d\n",time.getHour(),time.getMinute(),time.getSecond());
+                System.out.printf("%02d:%02d:%02d\n",
+                        time.getHour(),
+                        time.getMinute(),
+                        time.getSecond());
 
-                //sleep(1000);
+
+//                try {
+//                    sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+
                 repaint();
             }
         }

@@ -21,16 +21,39 @@ public class DownloadExample {
             "http://home.agh.edu.pl/~pszwed/wyklad-c/preprocesor-make-funkcje-biblioteczne.pdf",
     };
 
+    static int count = 0;
 
-    static class Downloader implements Runnable {
+    DownloadExample() {
+        for (String url : toDownload) {
+            new Downloader(url).run();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+//        for (String url : toDownload) {
+//            new Downloader(url).run();
+//        }
+
+        //  new Downloader().sequentialDownload();
+
+        //  new Downloader().concurrentDownload();
+
+          new Downloader().concurrentDownload2();
+    }
+
+    static class Downloader extends Thread implements Runnable {
         private final String url;
+
+        Downloader() {
+            this.url = "";
+        }
 
         Downloader(String url) {
             this.url = url;
         }
 
         public void run() {
-            String fileName = this.url;
+            String fileName = this.url.substring(url.lastIndexOf('/')+1, url.length());
 
             try (InputStream in = new URL(url).openStream();
                  FileOutputStream out = new FileOutputStream(fileName)) {
@@ -48,24 +71,52 @@ public class DownloadExample {
                 e.printStackTrace();
             }
             System.out.println("Done:" + fileName);
+            count++;
         }
 
-        static void sequentialDownload() {
+
+        public static void sequentialDownload() {
             double t1 = System.nanoTime() / 1e6;
             for (String url : toDownload) {
                 new Downloader(url).run();
             }
             double t2 = System.nanoTime() / 1e6;
-            System.out.printf(Locale.US, "t2-t1=%f\n", t2 - t1);
+            System.out.printf(Locale.US, "t2-t1=%f count = %d\n", t2 - t1, count);
+            count = 0;
         }
 
-        static void concurrentDownload(){
+        static void concurrentDownload() throws InterruptedException {
             double t1 = System.nanoTime()/1e6;
-            for(String url:toDownload){
+            for(String url : toDownload){
+
                 // uruchom Downloader jako wątek...
+                new Downloader(url).start();
             }
             double t2 = System.nanoTime()/1e6;
-            System.out.printf(Locale.US,"t2-t1=%f\n",t2-t1);
+            sleep(1000);
+            System.out.printf(Locale.US,"t2-t1=%f count = %d\n",t2-t1, count);
+            count = 0;
+        }
+
+        static void concurrentDownload2() throws InterruptedException {
+            double t1 = System.nanoTime() / 1e6;
+
+
+            for (String url : toDownload) {
+
+                // uruchom Downloader jako wątek...
+                new Downloader(url).start();
+            }
+
+            while (count != toDownload.length) {
+                //sleep(1000);
+                Thread.yield();
+            }
+
+            double t2 = System.nanoTime() / 1e6;
+
+            System.out.printf(Locale.US, "t2-t1=%f count = %d\n", t2 - t1, count);
+            count = 0;
         }
 
     }
