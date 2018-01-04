@@ -33,7 +33,7 @@ public class AdminUnitListTest {
 
         System.out.println("Test of not null answer for list(PrintStream out,int offset, int limit ) method\n");
 
-        aul.list(System.out, 2,2);
+        aul.list(System.out, 2, 2);
 
         System.out.println("End of this test.\n");
     }
@@ -49,7 +49,7 @@ public class AdminUnitListTest {
 
         System.out.println("Test of not null answer for selectByName(String pattern, boolean regex) method\n");
 
-        ret = aul.selectByName("olon",true);
+        ret = aul.selectByName("olon", true);
 
         System.out.println(ret.units.get(0).name);
 
@@ -67,7 +67,7 @@ public class AdminUnitListTest {
 
         System.out.println("Test of not null answer for getNeighbours() method\n");
 
-        neigh = aul.getNeighbours(aul.units.get(4),15.0);
+        neigh = aul.getNeighbours(aul.units.get(4), 15.0);
 
         System.out.println(neigh.units.get(0).name);
 
@@ -147,6 +147,45 @@ public class AdminUnitListTest {
 
 
     @Test
-    public void filter() {
+    public void filter() throws IOException {
+
+        AdminUnitList aul = new AdminUnitList();
+
+        aul.read("admin-units.csv");
+
+        aul = aul.filter(a -> a.name.startsWith("Ż")).sortInPlaceByArea();
+
+        System.out.println("Test of filter() method\n");
+        System.out.println(aul.units.get(0).name);
+        System.out.println("End of this test.\n");
+    }
+
+    @Test
+    public void filterByK() throws IOException {
+
+        AdminUnitList aul = new AdminUnitList();
+
+        aul.read("admin-units.csv");
+
+        aul = aul.filterByK();
+
+        System.out.println("Test of filterByK method\n");
+        System.out.println(aul.units.get(0).name);
+        System.out.println("End of this test.\n");
+    }
+
+
+    @Test
+    public void filterByParentMalopolskie() throws IOException {
+
+//        AdminUnitList aul = new AdminUnitList();
+//
+//        aul.read("admin-units.csv");
+//
+//        aul = aul.filterByParentMalopolskie();
+//
+//        System.out.println("Test of filterByParentMalopolskie method\n");
+//        System.out.println(aul.units.get(0).name);
+//        System.out.println("End of this test.\n");
     }
 }

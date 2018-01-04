@@ -232,12 +232,17 @@ public class AdminUnitList {
 
 
     AdminUnitList sort(Comparator<AdminUnit> cmp) {
+        // Tworzy wyjściową listę
+        // Kopiuje wszystkie jednostki
+        // woła sortInPlace
         AdminUnitList answer = new AdminUnitList();
         answer.units = new ArrayList<>(this.units);
         answer.sortInplace(cmp);
         return answer;
     }
 
+
+    /* Predykaty */
 
     /**
      *
@@ -258,6 +263,22 @@ public class AdminUnitList {
         return filter(a->a.getName().startsWith("K"));
     }
 
+    AdminUnitList filterByParentMalopolskie() {
+        return filter(a->a.parent.name.startsWith("małopolskie"));
+    }
+
+    AdminUnitList filterByA() {
+        return filter(a->a.getName().startsWith("A"));
+    }
+
+    AdminUnitList filterByAPopulation() {
+        return filter(a->a.getName().startsWith("A")).sortInplaceByPopulation();
+    }
+
+    AdminUnitList filterByParentSlaskieArea() {
+        return filter(a->a.getParent().getName().startsWith("śląskie")).sortInPlaceByArea();
+    }
+
 
 
 
@@ -276,7 +297,7 @@ public class AdminUnitList {
             i++;
             if( i > limit )
                 break;
-        }
+        }System.out.println("Test of filter() method\n");
         return answer;
     }
 

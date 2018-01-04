@@ -2,6 +2,7 @@ package lab6;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
@@ -9,8 +10,10 @@ import static org.junit.Assert.*;
 public class AdminUnitQueryTest {
 
     @Test
-    public void execute() {
+    public void execute() throws IOException {
         AdminUnitList list = new AdminUnitList();
+
+        list.read("admin-units.csv");
 
         AdminUnitQuery query = new AdminUnitQuery()
                 .selectFrom(list)
@@ -20,5 +23,6 @@ public class AdminUnitQueryTest {
                 .limit(100);
 
         query.execute().list(System.out);
+
     }
 }
