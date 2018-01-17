@@ -14,16 +14,24 @@ public class Mean {
         }
     }
 
+//    public static void main(String[] args) throws InterruptedException {
+//        initArray(100000000);
+//
+//        new MeanCalc(24,55).run();
+//
+//        MeanCalc.parallelMean(16);
+//    }
+
+
     public static void main(String[] args) throws InterruptedException {
-        initArray(100000000);
+        initArray(128000000);
 
-        new MeanCalc(24,55).run();
-
-        MeanCalc.parallelMean(16);
+        for(int cnt:new int[]{1,2,4,8,16,32,64,128}){
+            MeanCalc.parallelMean(cnt);
+        }
+        //  srednia wyszla taka sama dla kazdej ilosci watkow
+        //  najkrotszy czas zostal uzyskany dla 4 watkow, potem 8,1,2,16,31,64,128
     }
-
-
-
 
 
 
