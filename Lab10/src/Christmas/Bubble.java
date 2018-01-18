@@ -12,9 +12,11 @@ public class Bubble implements XmasShape {
     @Override
     public void render(Graphics2D g2d) {
         // ustaw kolor wypełnienia
-        g2d.fillOval(0,0,30,30);
+        g2d.setColor(this.lineColor);
+        g2d.fillOval(0,0,100,100);
+        g2d.setColor(this.fillColor);
         // ustaw kolor obramowania
-        g2d.drawOval(0,0,30,30);
+        g2d.drawOval(0,0,100,100);
     }
 
     @Override

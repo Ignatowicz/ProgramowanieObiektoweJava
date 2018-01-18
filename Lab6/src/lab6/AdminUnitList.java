@@ -264,7 +264,8 @@ public class AdminUnitList {
     }
 
     AdminUnitList filterByParentMalopolskie() {
-        return filter(a->a.parent.name.startsWith("małopolskie"));
+        return filter(a->a.getParent().getName().contains("małopolskie")
+                || a.getName().startsWith("powiat"));
     }
 
     AdminUnitList filterByA() {

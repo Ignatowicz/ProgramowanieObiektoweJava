@@ -3,33 +3,28 @@ package Christmas;
 import java.awt.*;
 
 public class Branch implements XmasShape{
-    int x1;
-    int y1;
-    int x2;
-    int y2;
+    int [] x;
+    int [] y;
     double scale;
-    Color lineColor;
+    GradientPaint paint;
 
     @Override
     public void render(Graphics2D g2d) {
-        g2d.setColor(this.lineColor);
+        g2d.setPaint(paint);
         // ustaw kolor obramowania
-        g2d.drawLine(this.x1, this.y1, this.x2, this.y2);
+        g2d.fillPolygon(x,y,x.length);
     }
 
     @Override
     public void transform(Graphics2D g2d) {
-        g2d.translate(x1,y1);
+        g2d.translate(0,0);
         g2d.scale(scale,scale);
     }
 
-    public Branch(int x1, int y1, int x2, int y2, double scale, Color lineColor){
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+    public Branch(int x[], int y[], double scale, GradientPaint paint){
+        this.x = x;
+        this.y = y;
         this.scale = scale;
-        this.lineColor = lineColor;
-
+        this.paint = paint;
     }
 }
