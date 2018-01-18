@@ -85,7 +85,7 @@ public class DownloadExample {
         public static void sequentialDownload() {
             double t1 = System.nanoTime() / 1e6;
             for (String url : toDownload) {
-                new Downloader(url).run();
+                new Thread(new Downloader(url)).start();
             }
             double t2 = System.nanoTime() / 1e6;
             System.out.printf(Locale.US, "Sequential: t2-t1=%f count = %d\n", t2 - t1, count.get());
@@ -98,7 +98,7 @@ public class DownloadExample {
             for(String url : toDownload){
 
                 // uruchom Downloader jako wątek...
-                new Downloader(url).start();
+                new Thread(new Downloader(url)).start();
             }
 
             double t2 = System.nanoTime()/1e6;
@@ -116,7 +116,7 @@ public class DownloadExample {
             for (String url : toDownload) {
 
                 // uruchom Downloader jako wątek...
-                new Downloader(url).start();
+                new Thread(new Downloader(url)).start();
             }
 
             while (!count.compareAndSet(toDownload.length, count.get())) {
@@ -139,7 +139,7 @@ public class DownloadExample {
             for (String url : toDownload) {
 
                 // uruchom Downloader jako wątek...
-                new Downloader(url).start();
+                new Thread(new Downloader(url)).start();
             }
 
             while (!count.compareAndSet(toDownload.length, count.get())) {

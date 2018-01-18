@@ -51,6 +51,7 @@ public class Mean {
             for(int i=start; i<end; i++) {
                 mean += array[i];
             }
+
             mean = mean/(end-start);
             System.out.printf(Locale.US, "%d-%d mean=%f\n", start, end, mean);
             try {
@@ -107,7 +108,7 @@ public class Mean {
 
             double t3 = System.nanoTime()/1e6;
 
-            System.out.printf(Locale.US,"size = %d \ncnt = %d >  \nt2-t1 = %f \nt3-t1 = %f \nmean = %f\n",
+            System.out.printf(Locale.US,"size = %d \ncnt = %d >  \nt2-t1 = %f \nt3-t1 = %f \nMEAN = %f\n",
                     array.length,
                     cnt,
                     t2-t1,
