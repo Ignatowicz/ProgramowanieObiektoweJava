@@ -62,7 +62,7 @@ public class Transform {
             double tmp = results.take();
         }
 
-        array.forEach(x->System.out.println(x));
+        //array.forEach(x->System.out.println(x));
 
 
 

@@ -1,6 +1,7 @@
 package lab6;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 
@@ -25,5 +26,7 @@ public class Main {
         AdminUnitList aul = new AdminUnitList();
 
         aul.read("admin-units.csv");
+
+        aul.writeHTML();
     }
 }

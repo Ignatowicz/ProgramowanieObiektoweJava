@@ -2,8 +2,7 @@ package lab6;
 
 import com.sun.org.glassfish.external.amx.AMX;
 
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -322,5 +321,77 @@ public class AdminUnitList {
                 break;
         }
         return answer;
+    }
+
+
+
+
+
+
+
+
+
+
+    public PrintStream writeHTML() throws FileNotFoundException, UnsupportedEncodingException {
+
+        PrintStream index = new PrintStream("index.html","ISO-8859-2");
+        index.printf("<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "<title>" + "INDEX" + "</title>\n" +
+                "<head>\n" +
+                "<meta charset=\"ISO-8859-2\">\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>" + "LISTA JEDNOSTEK" + "</h1>\n");
+
+        for(AdminUnit unit : this.units){
+
+            index.printf("<p><a href=\"" + (unit.name + ".html") + "\">" + unit.name + "</a></p>");
+
+            PrintStream out = new PrintStream( (unit.name + ".html"),"ISO-8859-2");
+
+            // tworzy plik
+            out.printf("<!DOCTYPE html>\n" +
+                    "<html>\n" +
+                    "<head>\n" +
+                    "<title>" + unit.getName() + "</title>\n" +
+                    "<meta charset=\"ISO-8859-2\">\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "<h1>" + unit.getName() + "</h1>\n" +
+                    "<p>Obszar jednostki: " + unit.getArea() +
+                    "\nGęstość zaludnienia: " + unit.getDensity() +
+                    "\nLiczba mieszkańców: " + unit.getPopulation() + "</p>");
+
+            // wypisuje rodzica
+            out.printf("\n<p>Link do jednostki nadrzędnej:" +
+                    "\n<a href=\"" + unit.parent.name + ".html" + "\">" + unit.parent.name + "</a></p>");
+
+            // wypisuje dzieci
+            out.printf("<p>Linki do jednostek podrzędnych:");
+            for(AdminUnit au: unit.children) {
+                out.printf("\n<a href=\"" + au.name + ".html" + "\">" + au.name + "</a>");
+            }
+            out.printf("</p>\n");
+
+
+
+            // wypisywanie sasiadow
+            AdminUnitList neighbours = new AdminUnitList();
+            neighbours.getNeighbours(unit, 7);
+
+            for(AdminUnit neighbour : neighbours.units){
+                out.printf("Sąsiad : <a href=\"" + neighbour.name +
+                        ".html\"> sąsiad </a><br/>\n");
+            }
+
+            out.printf("\n</body>\n</html>");
+            out.close();
+        }
+
+        index.printf("\n</body>\n</html>");
+
+        return index;
     }
 }
